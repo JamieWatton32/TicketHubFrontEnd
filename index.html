@@ -13,6 +13,8 @@
         hx-target="body" 
         hx-post="https://nscc-w0499673-tickethub.azurewebsites.net/api/ticket"
         hx-ext="json-enc"
+        hx-headers='{"Content-Type": "application/json"}'
+        hx-on::after-request="console.log(event.detail.xhr.responseText)"
         >
         <label for="concertId">Concert ID:</label>
         <input type="number" id="concertId" name="ConcertId" required><br>
