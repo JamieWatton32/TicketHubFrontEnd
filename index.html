@@ -4,9 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
     <title>TicketApp</title>
 </head>
 <body>
-    <p>Hello ticket hub!</p>
+    <h2>Concert Order Form</h2>
+    <form action="submit_order.php" method="post">
+        <label for="concertId">Concert ID:</label>
+        <input type="number" id="concertId" name="ConcertId" required><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="Email" required><br>
+        
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="Name" required><br>
+        
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="Phone" required><br>
+        
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="Quantity" min="1" required><br>
+        
+        <label for="creditCard">Credit Card:</label>
+        <input type="text" id="creditCard" name="CreditCard" maxlength="20" required><br>
+        
+        <label for="expiration">Expiration (MM/YY):</label>
+        <input type="text" id="expiration" name="Expiration" pattern="\d{2}/\d{2}" required><br>
+        
+        <label for="securityCode">Security Code:</label>
+        <input type="text" id="securityCode" name="SecurityCode" maxlength="4" required><br>
+        
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="Address" required><br>
+        
+        <label for="city">City:</label>
+        <input type="text" id="city" name="City" required><br>
+        
+        <label for="province">Province:</label>
+        <input type="text" id="province" name="Province" required><br>
+        
+        <label for="postalCode">Postal Code:</label>
+        <input type="text" id="postalCode" name="PostalCode" maxlength="10" required><br>
+        
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="Country" required><br>
+        
+        <button type="submit"
+            hx-post="/api/ticket"
+            hx-target="#response"
+            hx-ext="json-enc">
+            Submit Order
+        </button>
+    </form>
+
+    <div id="response"></div>
 </body> 
 </html>
