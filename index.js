@@ -1,20 +1,18 @@
 function handleResponse(event) {
     let status = event.detail.xhr.status;
     let response = event.detail.xhr.responseText;
+    let responseDiv = document.getElementById("response-message");
 
     try {
         let json = JSON.parse(response);
-        response = json.error || response;  // Extract error message
+        response = json.error || json.message || response;
     } catch (e) {
-        // Not JSON, use raw text
+        // If response is not JSON, leave it as is
     }
 
-    if (status !== 200) {
-        document.getElementById("response-message").innerText = 
-            `Error ${status}: ${response}`;
+    if (status === 200) {
+        responseDiv.innerHTML = `<div class="alert alert-success">✅ Order submitted successfully!</div>`;
     } else {
-        document.getElementById("response-message").innerText = 
-            "Order submitted successfully!";
-        document.getElementById("response-message").style.color = "green";
+        responseDiv.innerHTML = `<div class="alert alert-danger">❌ Error ${status}: ${response}</div>`;
     }
 }
