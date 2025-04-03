@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="htmx-config" content='{"selfRequestsOnly":false}'>
     <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
     <title>TicketApp</title>
@@ -10,8 +11,9 @@
 <body>
     <h2>Concert Order Form</h2>
     <form
-        hx-target="body" 
+       
         hx-post="https://nscc-w0499673-tickethub.azurewebsites.net/api/ticket"
+        hx-target="body" 
         hx-ext="json-enc"
         hx-headers='{"Content-Type": "application/json"}'
         hx-on::after-request="console.log(event.detail.xhr.responseText)"
