@@ -31,3 +31,25 @@ body {
 .btn-submit:hover {
     background: #a71d2a;
 }
+
+.photo-grid {
+    padding: 20px;
+}
+
+.photo-item {
+    overflow: hidden;
+    border-radius: 0.25rem; /* Bootstrap default rounded corners */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Bootstrap default shadow */
+    transition: transform 0.15s ease-in-out;
+}
+
+.photo-item:hover {
+    transform: scale(1.02);
+}
+
+.photo-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
+}
