@@ -20,24 +20,17 @@ function handleResponse(event) {
 document.addEventListener('htmx:load', function(event) {
     // This event fires after HTMX content has been loaded and processed.
     const concertIdInput = document.getElementById('concertId');
-    const urlParams = new URLSearchParams(window.location.search);
-    const concertId = urlParams.get('ConcertId');
-
-    if (concertIdInput) {
-        concertIdInput.value = concertId;
-    }
-});
-
-document.addEventListener('htmx:load', function(event) {
-    // This event fires after HTMX content has been loaded and processed.
     const concertNameH3 = document.getElementById('concertName');
     const urlParams = new URLSearchParams(window.location.search);
+    const concertId = urlParams.get('ConcertId');
     const concertName = urlParams.get('ConcertName');
 
     if (concertName) {
         concertNameH3.innerHTML+=concertName
     }
+    if (concertIdInput) {
+        concertIdInput.value = concertId;
+    }
 });
-
 
 
